@@ -1,9 +1,10 @@
-package com.wordpress.testHiptestSelenium;
+package com.common;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
 public class BasePage {
+	
 	protected final WebDriver driver;
 	public BasePage(WebDriver driver) {
 		super();

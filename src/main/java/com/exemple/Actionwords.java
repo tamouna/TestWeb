@@ -1,24 +1,26 @@
 package com.exemple;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.pageObject.PagePopCreateNewClient;
-import com.wordpress.testHiptestSelenium.Configuration;
-
+import com.common.BasePage;
+import com.pageObject.PageCreateAccount;
+import com.pageObject.PagePopCreateAccount;
+import com.pageObject.PageResearch;
 public class Actionwords {
 	
+	BasePage basePage;
 	WebDriver driver;
-	
+
+	public Actionwords(WebDriver driver) {
+		this.driver = driver;
+		basePage = new BasePage(driver);
+	}
 
     public void createAnAccountForANewClient() {
         // TODO: Implement action: "Click on My Account"
-    	driver = Configuration.driver();
-    	PagePopCreateNewClient page1 = new PagePopCreateNewClient(driver);
-    	WebDriverWait wait = new WebDriverWait(driver, 10);
-    	page1.clickOnMyAccountButton();
-    	
-        throw new UnsupportedOperationException();
+    	PageResearch pageResearch = new PageResearch(driver);
+    	pageResearch.clickMyaccount();
+        //throw new UnsupportedOperationException();
         
     }
 
@@ -31,22 +33,26 @@ public class Actionwords {
         // - COUNTRY
         // - TELEPHONE 
         // "
+    	PageCreateAccount pageCreateAccount = new PageCreateAccount(driver);
+    	pageCreateAccount.setEmail(eMAILADDRESS);
+    	pageCreateAccount.setPassword(pASSWORD);
+    	pageCreateAccount.setFirstName(fIRSTNAME);
+    	pageCreateAccount.setLastName(lASTNAME);
+    	pageCreateAccount.setCountry(cOUNTRY);
+    	pageCreateAccount.setPhone(tELEPHONE);
+    	
         // TODO: Implement action: "Click on By ticking this box"
         // TODO: Implement action: "Click on Create my account"
-    	
-        throw new UnsupportedOperationException();
+    	pageCreateAccount.setConformation();
+    	pageCreateAccount.setCreateAccount();
     }
 
-    public void fillInTheFormTheWebsite(String utilisateur, String motDePasse) {
-        // TODO: Implement action: String.format("In the filed Utilisateur and Mot de passe set: 
-        // -%s
-        // -%s", Utilisateur, MotDePasse)
-        // TODO: Implement action: "Click on OK"
-        throw new UnsupportedOperationException();
-    }
 
     public void nextStepOfCreatingAnAccount() {
         // TODO: Implement action: "Click to "
-        throw new UnsupportedOperationException();
+    	PagePopCreateAccount popAcount = new PagePopCreateAccount(driver);
+		//driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	popAcount.clickCreateMyaccount();
+        //throw new UnsupportedOperationException();
     }
 }
