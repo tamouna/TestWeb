@@ -1,6 +1,7 @@
 package com.wordpress.testHiptestSelenium;
 
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -19,8 +20,13 @@ public class ProjectTest {
 		
 	@Before
 	public void beforeClass() {
-		System.setProperty("webdriver.gecko.driver", "C:/Users/mouna/workspace/TestWeb/drivers/geckodriver.exe");
-		    
+		
+		URL path=ProjectTest.class.getClassLoader().getResource("geckodriver.exe");
+
+		//System.setProperty("webdriver.gecko.driver", "C:/Users/mouna/workspace/TestWeb/drivers/geckodriver.exe");
+		 
+		System.setProperty("webdriver.gecko.driver", path.getPath());
+		
 		driver = new FirefoxDriver();
 		baseURl = "https://bbhotels:bbhotels2018@preprod-fastly.moveon-hotelbb.com/en";
 		actionwords = new Actionwords(driver);
@@ -29,7 +35,7 @@ public class ProjectTest {
 		driver.get(baseURl);	
 	}	
 		
-    public void creatAnAcount(String eMAILADDRESS, String fIRSTNAME, String lASTNAME, String pASSWORD, String tELEPHONE, String cOUNTRY) { 
+    public void creatAnAcount(String eMAILADDRESS, String fIRSTNAME, String lASTNAME, String pASSWORD, String tELEPHONE, String cOUNTRY){ 
 
         actionwords.createAnAccountForANewClient();
         actionwords.nextStepOfCreatingAnAccount();
@@ -38,7 +44,7 @@ public class ProjectTest {
     
     @Test
     public void testCreatAnAcountUid2535b7736f514fff82a14887a12dce06() {
-        creatAnAcount("foufou@yopmail.com", "foufou", "foufou", "FoufouFoufou1&","France", "785694231");	
+        creatAnAcount("foufou@yopmail.com", "foufou", "foufou", "FoufouFoufou1&", "+33785694231", "France");	
    
 }
     @After

@@ -19,9 +19,7 @@ WebDriver driver;
 	WebElement headerHistory;
 	
 	public void clickMyaccount(){
-		headerHistory.click();
-		System.out.println("test1");
-		
+		headerHistory.click();		
 	}
 
 }

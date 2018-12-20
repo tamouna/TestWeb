@@ -1,5 +1,10 @@
 package com.pageObject;
 
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +12,8 @@ import org.openqa.selenium.support.FindBy;
 import com.common.BasePage;
 
 public class PageCreateAccount extends BasePage {
+	
+	WebElement element;
 
 	public PageCreateAccount(WebDriver driver) {
 		super(driver);
@@ -25,7 +32,7 @@ public class PageCreateAccount extends BasePage {
 	@FindBy(xpath="//*[@id=\"edit-register-last-name\"]")
 	WebElement lastName;
 	
-	@FindBy(xpath="//*[@id=\"edit-register-country\"]")
+	@FindBy(xpath="//*[@id='edit-personal-info-country-row']/div[2]/div")
 	WebElement country;
 	
 	@FindBy(xpath="//*[@id=\"edit-phone-0\"]")
@@ -55,11 +62,24 @@ public class PageCreateAccount extends BasePage {
 	
 	public void setCountry(String count){
 		country.click();
-		country.sendKeys(count);
+		testListOfElements(count);
+	}
+	
+	public void testListOfElements(String pays){
+		
+		//List <WebElement> listOfcountries = driver.findElements(By.xpath("//span[contains(@class, 'jcf-option']"));
+		String xpathhh = "//span[@class='jcf-option'][contains(text(),'" +pays+"')]";
+		try {
+			WebElement listOfcountries = driver.findElement(By.xpath(xpathhh));
+			listOfcountries.click();
+		} catch (NoSuchElementException e){
+			System.out.println("Le pays que vous avez selectioné n'existe pas dans les choix");
+		}
 	}
 	
 	public void setPhone(String phone){
 		telephone.click();
+		telephone.clear();
 		telephone.sendKeys(phone);
 	}
 	

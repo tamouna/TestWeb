@@ -14,17 +14,13 @@ public class PagePopCreateAccount extends BasePage {
 		// TODO Auto-generated constructor stub
 	}
 	
-	@FindBy(xpath="//*[@id=\"user-menu-block-click-here-link\"]")
+	//@FindBy(xpath="//*[@id=\"user-menu-block-click-here-link\"]")
+	@FindBy(xpath="//*[@id='user-menu-block-click-here-link']")
 	WebElement element;
 	
 	public void clickCreateMyaccount(){
-		System.out.println("test5");
 		//element = driver.findElement(By.xpath("//*[@id=\"user-menu-block-click-here-link\"]"));
-		System.out.println("test6");
 		element.click();
-		System.out.println("test7");
-
-		
 	}
 
 }

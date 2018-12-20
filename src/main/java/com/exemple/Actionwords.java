@@ -38,15 +38,15 @@ public class Actionwords {
     	pageCreateAccount.setPassword(pASSWORD);
     	pageCreateAccount.setFirstName(fIRSTNAME);
     	pageCreateAccount.setLastName(lASTNAME);
-    	pageCreateAccount.setCountry(cOUNTRY);
     	pageCreateAccount.setPhone(tELEPHONE);
+    	pageCreateAccount.setCountry(cOUNTRY);
+
     	
         // TODO: Implement action: "Click on By ticking this box"
         // TODO: Implement action: "Click on Create my account"
     	pageCreateAccount.setConformation();
     	pageCreateAccount.setCreateAccount();
     }
-
 
     public void nextStepOfCreatingAnAccount() {
         // TODO: Implement action: "Click to "
